@@ -44,7 +44,7 @@ export default function LandingLists() {
     <div className="w-full bg-background py-12 sm:py-16 lg:py-15 px-4 sm:px-6 lg:px-8 ">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <Title Title1={"Top Residentials"} />
+        <Title Title1={"Top"}  Title2={"Residentials"}/>
    
 
         {/* Category Filter */}

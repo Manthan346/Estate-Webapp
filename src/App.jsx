@@ -7,6 +7,8 @@ import HeroSection from './components/HeroSection'
 import Home from './Pages/Home'
 import Navbar from './components/Navbar'
 import PropertyListing from './Pages/PropertyListing'
+import PropertyDetails from './Pages/PropertyDetails'
+import Footer from './components/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,7 +19,11 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/property" element={<PropertyListing />} />
+
+      <Route path="/details" element={<PropertyDetails />} />
+
     </Routes>
+    <Footer />
     </>
   )
 }

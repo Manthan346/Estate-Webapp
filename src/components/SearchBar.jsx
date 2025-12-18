@@ -58,8 +58,8 @@ function SearchBar() {
     navigate(`/property?${params.toString()}`);
   };
   return (
-    <div> <div className="relative -mt-12 z-50 px-4">
-        <div className="bg-background shadow-lg rounded-3xl md:rounded-full max-w-4xl mx-auto flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-border">
+    <div> <div className="relative -mt-10 z-50 px-4">
+        <div className="bg-background  shadow-lg rounded-3xl md:rounded-full max-w-4xl mx-auto flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-border">
 
           {/* Location */}
           <div className="flex items-center gap-2 px-5 py-4 flex-1 min-w-0">
@@ -125,7 +125,7 @@ function SearchBar() {
           <div className="flex items-center justify-center px-4 py-4 md:px-5 flex-shrink-0">
             <Button
               onClick={handleSearch}
-              className="rounded-full px-6 py-3 w-full sm:w-auto h-full flex items-center justify-center"
+              className="rounded-full hover:bg-chart-4 px-6 py-3 w-full sm:w-auto h-full bg-chart-3 flex items-center justify-center"
             >
               <Search className="w-4 h-4 mr-2" />
               Find Property
