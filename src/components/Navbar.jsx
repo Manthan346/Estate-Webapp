@@ -23,7 +23,7 @@ function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'Properties', path: '/property' },
     { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Contact', path: '/contactus' },
   ]
 
   return (
@@ -38,7 +38,7 @@ function Navbar() {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <Home className={`w-6 h-6 ${showWhiteBg ? 'text-primary' : 'text-background'}`} />
-            <span className={`font-semibold ${showWhiteBg ? 'text-gray-900' : 'text-background'}`}>
+            <span className={`font-semibold ${showWhiteBg ? 'text-foreground' : 'text-background'}`}>
               Name
             </span>
           </div>

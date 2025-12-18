@@ -3,97 +3,71 @@ import LogoLoop from "./LogoLoop";
 import Title from "./Title";
 
 function Logos() {
-
-
- const imageLogos = [
-  {
-    src: "/logo/real-estate/img1.jpg",
-    alt: "Real Estate Builder",
-    href: "https://company1.com",
-  },
-  {
-    src: "/logo/real-estate/img2.jpg",
-    alt: "Property Broker",
-    href: "https://company2.com",
-  },
-  {
-    src: "/logo/real-estate/img3.jpg",
-    alt: "Housing Platform",
-    href: "https://company3.com",
-  },
-  {
-    src: "/logo/real-estate/img4.jpg",
-    alt: "Housing Platform",
-    href: "https://company3.com",
-  },
-  {
-    src: "/logo/real-estate/img5.png",
-    alt: "Housing Platform",
-    href: "https://company3.com",
-  },
-  
- 
-];
+  const imageLogos = [
+    { src: "/logo/real-estate/img1.jpg", alt: "Real Estate Builder", href: "#" },
+    { src: "/logo/real-estate/img2.jpg", alt: "Property Broker", href: "#" },
+    { src: "/logo/real-estate/img3.jpg", alt: "Housing Platform", href: "#" },
+    { src: "/logo/real-estate/img4.jpg", alt: "Housing Platform", href: "#" },
+    { src: "/logo/real-estate/img5.png", alt: "Housing Platform", href: "#" },
+  ];
 
   return (
-   
-<div className="space-y-12 ">
-       
-  {/* Heading */}
-  <div className="text-center space-y-3">
+    <section className="w-full -mt-10 space-y-12">
+      {/* Heading */}
+      <div className="mt-12 sm:mt-20">
+        <Title Title1="Builder" Title2="Partners" />
+      </div>
 
-
-   
-  </div>
-  <div className="mt-20">
-  <Title Title1={"Builder"} Title2={"Partners"} />
-  </div>
-
-  {/* Logo Loop */}
-  <LogoLoop
-    logos={imageLogos}
-    speed={80}
-    direction="left"
-    logoHeight={56}
-    gap={56}
-    pauseOnHover
-    ariaLabel="Real estate partners"
-    className="
-      relative rounded-2xl
-      bg-gradient-to-br from-background via-muted/40 to-background
-      py-10
-    "
-    renderItem={(item) => (
-      <a
-        href={item.href}
+      {/* Logo Loop */}
+      <LogoLoop
+        logos={imageLogos}
+        speed={60}                 // smoother on mobile
+        direction="left"
+        logoHeight={36}             // mobile-first height
+        gap={20}                    // mobile-safe gap
+        pauseOnHover
+        ariaLabel="Real estate partners"
         className="
-          group flex items-center justify-center
-          h-20 w-48
-          rounded-xl
-          border border-transparent
-          bg-background/80 backdrop-blur
-          transition-all duration-300 ease-out
-          hover:scale-[1.05]
-          hover:border-border
-          hover:shadow-lg
+          relative w-full overflow-hidden
+          rounded-2xl
+          bg-gradient-to-br from-background via-muted/40 to-background
+          py-6 sm:py-10
         "
-      >
-        <img
-          src={item.src}
-          alt={item.alt}
-          className="
-            h-12 object-contain
-            transition-transform duration-300
-            group-hover:scale-105
-          "
-          draggable={false}
-        />
-      </a>
-    )}
-  />
-</div>
-
-
+        renderItem={(item) => (
+          <a
+            href={item.href}
+            className="
+              group
+              flex items-center justify-center
+              h-14 w-32
+              sm:h-16 sm:w-40
+              md:h-20 md:w-48
+              rounded-xl
+              bg-background/80 backdrop-blur
+              border border-border/40
+              transition-all duration-300 ease-out
+              hover:scale-105
+              hover:shadow-lg
+            "
+          >
+            <img
+              src={item.src}
+              alt={item.alt}
+              draggable={false}
+              className="
+                h-8
+                sm:h-10
+                md:h-12
+                max-w-full
+                object-contain
+                transition-transform duration-300
+                group-hover:scale-105
+              "
+            />
+          </a>
+        )}
+      />
+    </section>
   );
 }
 

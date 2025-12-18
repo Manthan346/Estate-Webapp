@@ -9,6 +9,7 @@ import Navbar from './components/Navbar'
 import PropertyListing from './Pages/PropertyListing'
 import PropertyDetails from './Pages/PropertyDetails'
 import Footer from './components/Footer'
+import ContactUs from './Pages/ContactUs'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +22,7 @@ function App() {
       <Route path="/property" element={<PropertyListing />} />
 
       <Route path="/details" element={<PropertyDetails />} />
+      <Route path='/contactus' element={<ContactUs />} />
 
     </Routes>
     <Footer />

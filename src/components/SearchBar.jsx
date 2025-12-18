@@ -58,8 +58,8 @@ function SearchBar() {
     navigate(`/property?${params.toString()}`);
   };
   return (
-    <div> <div className="relative -mt-10 z-50 px-4">
-        <div className="bg-background  shadow-lg rounded-3xl md:rounded-full max-w-4xl mx-auto flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-border">
+    <div> <div className="relative -mt-25 sm:-mt-10 z-50 px-4">
+        <div className="bg-background  shadow-lg rounded-3xl  md:rounded-full max-w-4xl mx-auto flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-border">
 
           {/* Location */}
           <div className="flex items-center gap-2 px-5 py-4 flex-1 min-w-0">

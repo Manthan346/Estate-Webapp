@@ -12,7 +12,7 @@ import Autoplay from "embla-carousel-autoplay"
 
 
 
-const PropertyListing = () => {
+const PropertyDetails = () => {
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -202,6 +202,34 @@ const closeLightbox = () => {
                                             >
                                                 <Check className="w-5 h-5 text-primary mr-3 flex-shrink-0" />
                                                 <span className="text-foreground">{amenity}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                          
+                            <div className="mb-8">
+                                <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center">
+                                    <ImageIcon className="w-6 h-6 mr-2 text-primary" />
+                                    Highlight
+                                </h2>
+                                <div className="space-y-4">
+                                    <div className="rounded-xl overflow-hidden border border-border shadow-sm">
+                                        <img
+                                            src={property.highlightImg}
+                                            alt="Amenities"
+                                            className="w-full h-full object-cover"
+                                            onClick={() => openLightbox(property.highlightImg)}
+                                        />
+                                    </div>
+                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                        {property.highlightDescription.map((Highlight, index) => (
+                                            <li
+                                                key={index}
+                                                className="flex items-center bg-accent/50 rounded-lg px-4 py-3 hover:bg-accent transition-colors"
+                                            >
+                                                <Check className="w-5 h-5 text-primary mr-3 flex-shrink-0" />
+                                                <span className="text-foreground">{Highlight}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -421,13 +449,13 @@ const closeLightbox = () => {
             </div>
             {lightboxOpen && (
   <div
-    className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center p-4"
+    className="fixed inset-0 z-[9999] bg-foreground/90 flex items-center justify-center p-4"
     onClick={closeLightbox}
   >
     {/* Close Button */}
     <button
       onClick={closeLightbox}
-      className="absolute top-6 right-6 text-white text-3xl font-bold"
+      className="absolute top-6 right-6  text-background text-3xl font-bold"
     >
       ×
     </button>
@@ -446,4 +474,4 @@ const closeLightbox = () => {
     );
 };
 
-export default PropertyListing;
+export default PropertyDetails;

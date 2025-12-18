@@ -114,7 +114,7 @@ function MarqueeRow({ testimonials, reverse = false }) {
 
 export default function AnimatedTestimonials() {
   return (
-    <div className="min-h-screen bg-background py-12 sm:py-20 overflow-hidden relative">
+    <div className=" bg-background py-12 sm:py-20 overflow-hidden relative">
       {/* Header */}
       <div className="text-center mb-8 sm:mb-16 px-4 relative z-10">
         <div className="inline-block mb-3 sm:mb-4">
@@ -125,7 +125,7 @@ export default function AnimatedTestimonials() {
       </div>
 
       {/* Marquee rows */}
-      <div className="space-y-0 relative bg-chart-3 h-150 z-10">
+      <div className="space-y-0 relative bg-chart-3 sm:h-150 z-10">
         <MarqueeRow testimonials={testimonials.slice(0, 4)} />
         <MarqueeRow testimonials={testimonials.slice(4, 8)} reverse={true} />
         
