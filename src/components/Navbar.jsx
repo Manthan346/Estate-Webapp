@@ -39,7 +39,7 @@ function Navbar() {
           <div className="flex items-center gap-2">
             <Home className={`w-6 h-6 ${showWhiteBg ? 'text-primary' : 'text-background'}`} />
             <span className={`font-semibold ${showWhiteBg ? 'text-gray-900' : 'text-background'}`}>
-              Realteek
+              Name
             </span>
           </div>
 

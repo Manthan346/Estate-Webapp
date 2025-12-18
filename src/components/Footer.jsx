@@ -11,7 +11,7 @@ function Footer() {
           {/* Brand */}
           <div className="space-y-4 md:col-span-1">
             <h2 className="text-xl font-semibold tracking-tight">
-              RealEstatePro
+             Name
             </h2>
             <p className="text-sm text-muted-foreground">
               Building trust through premium property solutions.
