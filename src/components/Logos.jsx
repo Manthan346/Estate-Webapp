@@ -12,7 +12,7 @@ function Logos() {
   ];
 
   return (
-    <section className="w-full -mt-10 space-y-12">
+    <section className="w-full mt-20 space-y-12">
       {/* Heading */}
       <div className="mt-12 sm:mt-20">
         <Title Title1="Builder" Title2="Partners" />
