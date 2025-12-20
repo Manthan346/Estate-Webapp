@@ -6,6 +6,7 @@ import React from 'react'
 import AnimatedTestimonials from '../components/AnimatedTestimonial'
 import Logos from '../components/Logos'
 import HomeCategory from '../components/HomeCategory'
+import FAQ from '../components/FAQ'
 
 function Home() {
   return (
@@ -15,7 +16,9 @@ function Home() {
         <HomeProperty />
         <InfoSection />
       <AnimatedTestimonials />
+      
       <Logos />
+      <FAQ />
     </div>
   )
 }

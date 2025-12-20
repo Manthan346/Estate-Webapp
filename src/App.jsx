@@ -10,6 +10,7 @@ import PropertyListing from './Pages/PropertyListing'
 import PropertyDetails from './Pages/PropertyDetails'
 import Footer from './components/Footer'
 import ContactUs from './Pages/ContactUs'
+import AboutUs from './Pages/AboutUs'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +24,7 @@ function App() {
 
       <Route path="/details" element={<PropertyDetails />} />
       <Route path='/contactus' element={<ContactUs />} />
+      <Route path='/aboutus' element={<AboutUs />} />
 
     </Routes>
     <Footer />

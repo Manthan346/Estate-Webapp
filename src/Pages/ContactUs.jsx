@@ -1,7 +1,29 @@
+import { useState } from "react";
 import { Button } from "../components/ui/button";
+import { UserDetails } from "../../api";
 
 export default function ContactPage() {
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [phoneNum, setPhoneNum] = useState("")
+  const [comment, setComment] = useState("")
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+       const response = UserDetails({name,email,phoneNum,comment})
+        const result = response.data
+    
+      
+    } catch (error) {
+      
+    }
+   
+
+  }
+
+
   return (
+
     <section className="w-full bg-muted/30 py-16">
       <div className="container mx-auto px-4">
         <div
@@ -46,6 +68,9 @@ export default function ContactPage() {
                 <input
                   type="text"
                   placeholder="Enter your name"
+                  value={name}
+                  name="email"
+                  onChange={(e)=> setName(e.target.value)}
                   className="
                     mt-1 w-full rounded-lg
                     border border-input
@@ -67,6 +92,8 @@ export default function ContactPage() {
                     bg-background px-4 py-2
                     focus:outline-none focus:ring-2 focus:ring-primary
                   "
+                  value={email}
+                   onChange={(e)=> setEmail(e.target.value)}
                 />
               </div>
 
@@ -74,7 +101,7 @@ export default function ContactPage() {
               <div>
                 <label className="text-sm font-medium">Phone Number</label>
                 <input
-                  type="tel"
+                  type="number"
                   placeholder="+91 00000 00000"
                   className="
                     mt-1 w-full rounded-lg
@@ -82,6 +109,9 @@ export default function ContactPage() {
                     bg-background px-4 py-2
                     focus:outline-none focus:ring-2 focus:ring-primary
                   "
+                   onChange={(e)=> setPhoneNum(e.target.value)}
+                   value={phoneNum}
+                   name="phoneNum"
                 />
               </div>
 
@@ -98,11 +128,14 @@ export default function ContactPage() {
                     focus:outline-none focus:ring-2 focus:ring-primary
                     resize-none
                   "
+                   onChange={(e)=> setComment(e.target.value)}
+                   value={comment}
+                   name="comment"
                 />
               </div>
 
               {/* Button */}
-              <Button size="lg" className="w-full bg-chart-3 hover:bg-chart-2 rounded-full">
+              <Button onClick={handleSubmit} size="lg" className="w-full bg-chart-3 hover:bg-chart-2 rounded-full">
                 Submit Form →
               </Button>
             </form>

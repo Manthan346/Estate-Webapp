@@ -30,3 +30,8 @@
     params: { id }
   })
 }
+
+  export const UserDetails = (data) => {
+    API.post("/contact", data)
+
+  }

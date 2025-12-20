@@ -41,7 +41,7 @@ function HomeProperty() {
   return (
     <div className="max-w-8xl mx-auto px-4 -mt-20 sm:px-6 lg:px-8 py-12">
       {/* Property Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {loading
           ? Array.from({ length: 8 }).map((_, index) => (
               <div
@@ -90,7 +90,7 @@ function HomeProperty() {
 
                   <div className="flex items-center text-foreground mb-4">
                     <MapPin className="w-4 h-4 mr-2 text-chart-3" />
-                    <span className="text-sm font-medium">{property.city?.name}</span>
+                    <span className="text-sm font-medium">{property.city?.name.charAt(0).toUpperCase() + property.city?.name.slice(1)}</span>
                   </div>
 
                   <p className="text-sm text-foreground mb-2 line-clamp-2">

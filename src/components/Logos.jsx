@@ -15,7 +15,7 @@ function Logos() {
     <section className="w-full mt-20 space-y-12">
       {/* Heading */}
       <div className="mt-12 sm:mt-20">
-        <Title Title1="Builder" Title2="Partners" />
+        <Title Title1="BUILDER" Title2="PARTNERS" />
       </div>
 
       {/* Logo Loop */}

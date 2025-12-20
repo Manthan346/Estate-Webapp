@@ -100,7 +100,7 @@ function MarqueeRow({ testimonials, reverse = false }) {
         className="flex gap-3 sm:gap-6 animate-marquee hover:[animation-play-state:paused]"
         style={{ 
           '--gap': '1.5rem',
-          '--duration': '40s',
+          '--duration': '30s',
           animationDirection: reverse ? 'reverse' : 'normal'
         }}
       >
@@ -120,14 +120,15 @@ export default function AnimatedTestimonials() {
         <div className="inline-block mb-3 sm:mb-4">
         
         </div>
-       <Title Title1={"Customer"} Title2={"Says"} />
+       <Title Title1={"CUSTOMER"} Title2={"SAYS"} />
       
       </div>
 
       {/* Marquee rows */}
-      <div className="space-y-0 relative bg-chart-3 sm:h-150 z-10">
+      <div className="space-y-0  relative bg-muted-foreground/20 sm:h-73 z-10">
         <MarqueeRow testimonials={testimonials.slice(0, 4)} />
-        <MarqueeRow testimonials={testimonials.slice(4, 8)} reverse={true} />
+        
+        
         
       </div>
 

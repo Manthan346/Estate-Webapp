@@ -4,19 +4,17 @@
 @import "tw-animate-css";
 
 @keyframes marquee {
-  from {
+  0% {
     transform: translateX(0);
   }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
+  100% {
+    transform: translateX(-40%);
   }
 }
 
 .animate-marquee {
-  animation: marquee var(--duration, 40s) linear infinite;
-  will-change: transform;
+  animation: marquee var(--duration, 30s) linear infinite;
 }
-
 
 @custom-variant dark (&:is(.dark *));
 

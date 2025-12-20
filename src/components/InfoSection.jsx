@@ -31,8 +31,8 @@ const WhatWeDo = () => {
     <div className="bg-background py-16 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-8xl mx-auto">
         {/* Section Title */}
-        <div className="flex justify-center mt-15 mb-8">
-          <Title Title1={"WHAT"} Title2={" WE DO"} />
+        <div className="flex justify-center mt-15 space mb-8">
+          <Title Title1={"WHAT"} Title2={" WE"} Title3={"DO"} />
         </div>
 
         {/* Services Grid */}

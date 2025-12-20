@@ -82,7 +82,7 @@ function PropertyListing() {
     <div>
       {/* Hero Section */}
       <div className="w-full">
-        <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden">
+        <div className="relative w-full h-[400px] sm:h-[500px]  overflow-hidden">
           <motion.img
             src={heroimg}
             alt="Hero"
@@ -95,7 +95,7 @@ function PropertyListing() {
           <div className="absolute inset-0" />
 
           {/* Hero Text */}
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 text-center w-full px-4">
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 text-center w-full mt-8 px-4">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -103,9 +103,7 @@ function PropertyListing() {
               viewport={{ once: false, amount: 0.3 }}
               className="text-background mb-2"
             >
-              <span className="text-2xl sm:text-3xl md:text-4xl font-light italic">
-                Buy. Sell. Rent.
-              </span>
+              
             </motion.h1>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
@@ -114,7 +112,7 @@ function PropertyListing() {
               viewport={{ once: false, amount: 0.3 }}
               className="text-background text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
             >
-              Real Estate Done Right
+              ALL PROPERTIES
             </motion.h2>
           </div>
         </div>
@@ -133,10 +131,11 @@ function PropertyListing() {
 
       {/* Properties Section */}
       <div className="max-w-8xl mt-50 mx-auto px-4 sm:px-6 lg:px-8">
-        <Title Title1={"All"} Title2={"Residentials"} />
+        <Title Title1={"MOST"} Title2={"LIKED"} Title3={"PROPERTIES "} />
+        
 
         {/* Property Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {loading
             ? Array.from({ length: 20 }).map((_, index) => (
               <div
@@ -185,7 +184,7 @@ function PropertyListing() {
 
                   <div className="flex items-center text-foreground mb-4">
                     <MapPin className="w-4 h-4 mr-2 text-chart-3" />
-                    <span className="text-sm font-medium">{property.city?.name}</span>
+                    <span className="text-sm font-medium">{property.city?.name.charAt(0).toUpperCase() + property.city?.name.slice(1)}</span>
                   </div>
 
                   <p className="text-sm text-foreground mb-2 line-clamp-2">

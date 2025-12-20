@@ -72,7 +72,7 @@ function SearchBar() {
                 {allCity.length > 0 ? (
                   allCity.map((item, index) => (
                     <SelectItem key={index} value={item.id}>
-                      {item.name}
+                      {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
                     </SelectItem>
                   ))
                 ) : (

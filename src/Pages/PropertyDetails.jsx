@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MapPin, Phone, Check, Map, Building2, Image as ImageIcon, IndianRupee } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { fetchPropertyDetail } from '../../api';
+import { fetchPropertyDetail, UserDetails } from '../../api';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../components/ui/carousel';
@@ -14,17 +14,17 @@ import Autoplay from "embla-carousel-autoplay"
 
 const PropertyDetails = () => {
     const [formData, setFormData] = useState({
-        fullName: '',
+        name: '',
         email: '',
-        phone: '',
-        message: ''
+        phoneNum: '',
+        comment: ''
     });
     const [lightboxOpen, setLightboxOpen] = useState(false)
 const [lightboxImage, setLightboxImage] = useState(null)
     const [property, setProperty] = useState(null)
     const autoplay = useRef(
         Autoplay({
-            delay: 3000,        // 3 seconds
+            delay: 2000,        // 3 seconds
             stopOnInteraction: true,
             stopOnMouseEnter: true,
         })
@@ -81,10 +81,12 @@ const closeLightbox = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = () => {
-        console.log('Form submitted:', formData);
-        alert('Thank you for your inquiry!');
-    };
+   const handleSubmit = async (e) => {
+    e.preventDefault()
+    const response = await UserDetails(formData)
+    const result = response.data.data
+    console.log(result)
+   }
 
     return (
         <div className="min-h-screen bg-background font-sans mt-20 p-4 md:p-8">
@@ -135,7 +137,7 @@ const closeLightbox = () => {
                                     </div>
                                     <div className="flex items-center text-muted-foreground">
                                         <MapPin className="w-5 h-5 mr-2 text-primary" />
-                                        <span className="text-base">{property.address}, {property.city.name}</span>
+                                        <span className="text-base">{property.address}, {property.city?.name.charAt(0).toUpperCase() + property.city?.name.slice(1)}</span>
                                     </div>
                                 </div>
                                 <div className="text-left md:text-right">
@@ -150,7 +152,7 @@ const closeLightbox = () => {
                             {/* About Section */}
                             <div className="mb-8">
                                 <h2 className="text-2xl font-bold text-foreground mb-4 flex space-x-2 items-center">
-                                    <Building2 className="w-6 h-6 mr-2 text-primary" />
+                                   
                                     <p className=''>About</p>  <p className='text-chart-3'>Property</p>
                                 </h2>
                                 <div className="bg-muted/30 rounded-lg p-5">
@@ -163,7 +165,7 @@ const closeLightbox = () => {
                             {/* Facilities Section */}
                             <div className="mb-8">
                                 <h2 className="text-2xl font-bold text-foreground mb-4 space-x-2 flex items-center">
-                                    <Check className="w-6 h-6 mr-2 text-primary" />
+                                   
                                     <p className=''>Key</p>  <p className='text-chart-3'>Features</p>
                                 </h2>
                                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -182,7 +184,7 @@ const closeLightbox = () => {
                             {/* Amenities Section */}
                             <div className="mb-8">
                                 <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center">
-                                    <ImageIcon className="w-6 h-6 mr-2 text-primary" />
+                                  
                                     Amenities
                                 </h2>
                                 <div className="space-y-4">
@@ -196,11 +198,12 @@ const closeLightbox = () => {
                                     </div>
                                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                         {property.amentiesDescription.map((amenity, index) => (
+                                            
                                             <li
                                                 key={index}
-                                                className="flex items-center bg-accent/50 rounded-lg px-4 py-3 hover:bg-accent transition-colors"
+                                                className="flex items-center  bg-accent/50 rounded-lg px-4 py-3 hover:bg-accent transition-colors"
                                             >
-                                                <Check className="w-5 h-5 text-primary mr-3 flex-shrink-0" />
+                                                 <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
                                                 <span className="text-foreground">{amenity}</span>
                                             </li>
                                         ))}
@@ -210,7 +213,7 @@ const closeLightbox = () => {
                           
                             <div className="mb-8">
                                 <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center">
-                                    <ImageIcon className="w-6 h-6 mr-2 text-primary" />
+                                    
                                     Highlight
                                 </h2>
                                 <div className="space-y-4">
@@ -222,13 +225,13 @@ const closeLightbox = () => {
                                             onClick={() => openLightbox(property.highlightImg)}
                                         />
                                     </div>
-                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <ul className="grid  grid-cols-1 md:grid-cols-2 gap-3">
                                         {property.highlightDescription.map((Highlight, index) => (
                                             <li
                                                 key={index}
                                                 className="flex items-center bg-accent/50 rounded-lg px-4 py-3 hover:bg-accent transition-colors"
                                             >
-                                                <Check className="w-5 h-5 text-primary mr-3 flex-shrink-0" />
+                                                <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
                                                 <span className="text-foreground">{Highlight}</span>
                                             </li>
                                         ))}
@@ -239,7 +242,7 @@ const closeLightbox = () => {
                             {/* Location Section */}
                             <div className="mb-8">
                                 <h2 className="text-2xl space-x-2 font-bold text-foreground mb-4 flex items-center">
-                                    <Map className="w-6 h-6 mr-2 text-primary" />
+                                   
                                     <p className=''>Location</p>  <p className='text-chart-3'>Highlights</p>
                                 </h2>
                                 <div className="space-y-4">
@@ -257,7 +260,7 @@ const closeLightbox = () => {
                                                 key={index}
                                                 className="flex items-center bg-secondary/50 rounded-lg px-4 py-3 hover:bg-secondary transition-colors"
                                             >
-                                                <MapPin className="w-5 h-5 text-primary mr-3 flex-shrink-0" />
+                                                 <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
                                                 <span className="text-foreground">{desc}</span>
                                             </li>
                                         ))}
@@ -268,7 +271,7 @@ const closeLightbox = () => {
                             {/* Floor Plans Section */}
                             <div className="mb-8">
                                 <h2 className="text-2xl font-bold space-x-2 text-foreground mb-4 flex items-center">
-                                    <Building2 className="w-6 h-6 mr-2 text-primary" />
+                                    
                                     <p className=''>Floor</p>  <p className='text-chart-3'>Plans</p>
                                 </h2>
                                 <div className="space-y-6">
@@ -296,7 +299,7 @@ const closeLightbox = () => {
                             {/* Price List Section */}
                             <div>
                                 <h2 className="text-2xl font-bold space-x-2 text-foreground mb-4 flex items-center">
-                                    <IndianRupee className="w-6 h-6 mr-2 text-primary" />
+                                    
                                     <p className=''>Pricing</p>  <p className='text-chart-3'>Details</p>
                                 </h2>
                                 <div className="bg-muted/30 rounded-xl overflow-hidden border border-border">
@@ -330,7 +333,7 @@ const closeLightbox = () => {
                             {/* PROPERTY GALLERY CAROUSEL */}
                             <div className="mb-12 mt-5">
                                 <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center">
-                                    <ImageIcon className="w-6 h-6 mr-2 text-primary" />
+                                    
                                     <span>Property</span>
                                     <span className="text-chart-3 ml-2">Gallery</span>
                                 </h2>
@@ -385,8 +388,8 @@ const closeLightbox = () => {
                                     <label className="block text-sm font-semibold text-foreground mb-2">Full Name</label>
                                     <Input
                                         type="text"
-                                        name="fullName"
-                                        value={formData.fullName}
+                                        name="name"
+                                        value={formData.name}
                                         onChange={handleInputChange}
                                         placeholder="John Doe"
                                         className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all"
@@ -408,9 +411,9 @@ const closeLightbox = () => {
                                 <div>
                                     <label className="block text-sm font-semibold text-foreground mb-2">Phone</label>
                                     <Input
-                                        type="tel"
-                                        name="phone"
-                                        value={formData.phone}
+                                        type="number"
+                                        name="phoneNum"
+                                        value={formData.phoneNum}
                                         onChange={handleInputChange}
                                         placeholder="+91"
                                         className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all"
@@ -420,8 +423,8 @@ const closeLightbox = () => {
                                 <div>
                                     <label className="block text-sm font-semibold text-foreground mb-2">Message</label>
                                     <textarea
-                                        name="message"
-                                        value={formData.message}
+                                        name="comment"
+                                        value={formData.comment}
                                         onChange={handleInputChange}
                                         placeholder="Tell us about your requirements..."
                                         rows="5"

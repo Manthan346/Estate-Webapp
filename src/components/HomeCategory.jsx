@@ -10,12 +10,12 @@ export default function HomeCategory() {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const categories = ["residential", "commercial"];
+  const categories = ["Residential", "Commercial"];
 
   const handleCategory = (category) => {
     const params = new URLSearchParams(searchParams);
 
-    if (category === "residential") {
+    if (category === "Residential") {
       if (params.get("propertyType") === "RESIDENTIAL") {
         params.delete("propertyType");
       } else {
@@ -23,7 +23,7 @@ export default function HomeCategory() {
       }
     }
 
-    if (category === "commercial") {
+    if (category === "Commercial") {
       if (params.get("propertyType") === "COMMERCIAL") {
         params.delete("propertyType");
       } else {
@@ -44,26 +44,16 @@ export default function HomeCategory() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <Title Title1={"Top"} Title2={"Residentials"} />
+          <Title Title1={"TOP"} Title2={"RESIDENTIALS"} />
         </motion.div>
 
         {/* Category Filter */}
         <div className="relative mb-8 sm:mb-12">
           <div className="flex items-center justify-center gap-2">
             {/* Left Arrow */}
-            <motion.button
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: -20 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.4 }}
-              viewport={{ once: true }}
-              className="hidden sm:flex items-center justify-center w-10 h-10 rounded-full bg-card border border-border hover:bg-accent flex-shrink-0 transition-colors"
-            >
-              <ChevronLeft className="w-5 h-5 text-muted-foreground" />
-            </motion.button>
+           
 
-            <div className="overflow-x-auto scrollbar-hide flex-1">
+            <div className=" flex-1">
               <motion.div
                 className="flex items-center gap-2 sm:gap-3 justify-start sm:justify-center min-w-max px-2 sm:px-0"
                 initial="hidden"
@@ -77,9 +67,9 @@ export default function HomeCategory() {
               >
                 {categories.map((category) => {
                   const isActive =
-                    (category === "residential" &&
+                    (category === "Residential" &&
                       searchParams.get("propertyType") === "RESIDENTIAL") ||
-                    (category === "commercial" &&
+                    (category === "Commercial" &&
                       searchParams.get("propertyType") === "COMMERCIAL");
 
                   return (
@@ -111,30 +101,12 @@ export default function HomeCategory() {
             </div>
 
             {/* Right Arrow */}
-            <motion.button
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: 20 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.4 }}
-              viewport={{ once: true }}
-              className="hidden sm:flex items-center justify-center w-10 h-10 rounded-full bg-card border border-border hover:bg-accent flex-shrink-0 transition-colors"
-            >
-              <ChevronRight className="w-5 h-5 text-muted-foreground" />
-            </motion.button>
+          
           </div>
         </div>
 
         {/* Property Grid Placeholder */}
-        <motion.div
-          whileInView={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {/* You can render your property cards here */}
-        </motion.div>
+      
       </div>
     </div>
   );
